@@ -4,7 +4,15 @@ import fs from "fs";
 import { ethers } from "ethers";
 
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json());
 
 const DB_FILE = "./staking.json";
